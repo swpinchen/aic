@@ -9,7 +9,7 @@
 	    </ul>
 	    <p> Open hours: </p>
 	    <p> <%= @clinic.open_hours %> </p>
-	    <%= link_to 'book', clinics_path, class: 'btn btn-primary m-1' %>
+	    <%= link_to 'book', new_clinic_booking_path(@clinic), class: 'btn btn-primary m-1' %>
 	  </div>
 	<div class="container m-3">
 		<% if @clinic.photo.attached? %>
