@@ -33,6 +33,9 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'autoprefixer-rails'
+# For seeds
+gem 'faker'
+
 gem 'font-awesome-sass'
 gem 'simple_form'
 
