@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   resources :clinics do
     resources :bookings, only: [:new, :create]
     # TO DO nest the reviews
+    resources :reviews, only: [:index, :new, :create]
   end
 end
