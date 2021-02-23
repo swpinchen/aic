@@ -1,10 +1,16 @@
-test:
-  service: Disk
-  root: <%= Rails.root.join("tmp/storage") %>
 
-local:
-  service: Disk
-  root: <%= Rails.root.join("storage") %>
+# config/storage.yml
+cloudinary:
+  service: Cloudinary
+
+# We can remove everything below from this file.
+# test:
+#   service: Disk
+#   root: <%= Rails.root.join("tmp/storage") %>
+
+# local:
+#   service: Disk
+#   root: <%= Rails.root.join("storage") %>
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
