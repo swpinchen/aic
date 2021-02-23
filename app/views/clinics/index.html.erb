@@ -1,16 +1,15 @@
 <!--Made this html as a testing, please erase when creating the view for this action -->
-<div class="container">
-  <h1>Clinics</h1>
-</div>
-  <div class="main-container">
-  <div class="container">
+<div class="row justify-content-between">
+  <div class="col-12 col-lg-7">
+    <h2>Clinics near to you</h2>
     <div class="cards">
       <%@clinics.each do |clinic|%>
         <%= render 'clinics/card', clinic: clinic %>
       <%end%>
     </div>
-    </div>
-    <img id="map" src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.346,48.8595,11.72,0,0/600x1000?access_token=pk.eyJ1IjoieWFubmx1Y2tsZWluIiwiYSI6ImNqd3VvZmh0eDAwZzk0YWxjYmx1bmFpaDcifQ.R6oqb2VcNqMXhDf3S1Pb3A">
-
   </div>
+  <div class="col-12 col-lg-5">
+    <img id="map" src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.346,48.8595,11.72,0,0/600x1000?access_token=pk.eyJ1IjoieWFubmx1Y2tsZWluIiwiYSI6ImNqd3VvZmh0eDAwZzk0YWxjYmx1bmFpaDcifQ.R6oqb2VcNqMXhDf3S1Pb3A">
+  </div>
+</div>
 
