@@ -2,7 +2,8 @@
 <div class="container">
   <h2>New booking</h2>
   <%= simple_form_for [@clinic, @booking] do |f| %>
-    <%= f.input :booking_time %>
+    <p>Please select the time and date</p>
+    <%= f.datetime_field :booking_time %>
     <%= f.input :content %>
     <%= f.submit "Book!", class: "btn btn-primary" %>
   <%end%>
