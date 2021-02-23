@@ -1,0 +1,9 @@
+<!--Made this html as a testing, please erase when creating the view for this action -->
+<div class="container">
+  <h2>New booking</h2>
+  <%= simple_form_for [@clinic, @booking] do |f| %>
+    <%= f.input :booking_time %>
+    <%= f.input :content %>
+    <%= f.submit "Book!", class: "btn btn-primary" %>
+  <%end%>
+</div>
