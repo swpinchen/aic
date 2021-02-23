@@ -5,5 +5,4 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
     # TO DO nest the reviews
   end
-   resources :bookings, only: [:show, :edit, :update, :destroy]
 end
