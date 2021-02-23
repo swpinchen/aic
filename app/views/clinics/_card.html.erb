@@ -1,5 +1,7 @@
 <div class="card-product">
-  <%# <%= cl_image_tag clinic.photo.key, height: 500, crop: :fill %>
+  <% if clinic.photo.attached? %>
+    <%= cl_image_tag clinic.photo.key, height: 500, crop: :fill %>
+  <% end %>
   <div class="card-product-infos">
     <h2><%= link_to clinic.name, clinic_path(clinic) %></h2>
     <div class='d-flex'>
@@ -11,6 +13,7 @@
           <%# <i class="fas fa-star"></i>
         <% end %>
         <%# <% end %>
+
 
       </div>
     </div>
