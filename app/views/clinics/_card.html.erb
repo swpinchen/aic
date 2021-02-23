@@ -1,0 +1,18 @@
+<div class="card-product">
+  <%# <%= cl_image_tag clinic.photo.key, height: 500, crop: :fill %>
+  <div class="card-product-infos">
+    <h2><%= link_to clinic.name, clinic_path(clinic) %></h2>
+    <div class='d-flex'>
+      <p><%= clinic.description %></p>
+      <div class="stars d-flex">
+      <%# <% if clinic.reviews.rating.any?%>
+        <%# <% clinic.reviews.rating do %>
+
+          <%# <i class="fas fa-star"></i>
+        <% end %>
+        <%# <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
