@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+puts 'Cleaning up db...'
+User.destroy_all
+puts 'Db is now clean!...'
+
+puts 'Creating users...'
+
+user_email_list = ['s_pinchen@hotmail.com', 'ivanwilf@gmail.com', 'natasha030320@gmail.com', 'hhknight@me.com']
+
+user_email_list.length.times do |index|
+  user = User.create!(email: user_email_list[index], password: "password")
+  puts "User #{user.id}: #{user.email} was created!"
+end
