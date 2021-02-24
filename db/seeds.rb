@@ -57,7 +57,10 @@ user_email_list.length.times do |index|
 end
 
 puts 'Creating clinics...'
-20.times do |index|
+clinicArray.each_with_index do |url, index|
+  puts url
+  file = URI.open(url)
+
   clinic = Clinic.create!(name: "#{Faker::Address.unique.community} Clinic",
   location: Faker::Address.unique.city,
   #Open hours needs to be improved.  A quick implementation for now.
@@ -66,5 +69,6 @@ puts 'Creating clinics...'
   specialities: specialitiesArray.sample,
   user: user_list.sample
 )
+  clinic.photo.attach(io: file, filename: 'clinic.png', content_type: 'image/png')
 puts "#{index+1}. Id:#{clinic.id} - #{clinic.name} was created!"
 end
