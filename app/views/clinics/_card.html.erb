@@ -7,13 +7,16 @@
     <div class='d-flex'>
       <p><%= clinic.description %></p>
       <div class="stars d-flex">
-      <%# <% if clinic.reviews.rating.any?%>
-        <%# <% clinic.reviews.rating do %>
-
-          <%# <i class="fas fa-star"></i>
+      <% if clinic.reviews.any? %>
+        <% clinic.average_rating.times do %>
+          <i class="fas fa-star"></i>
         <% end %>
-        <%# <% end %>
+        <% (5 - clinic.average_rating).times do %>
+        <i class="far fa-star"></i>
+        <% end %>
+      <% end %>
       </div>
+
     </div>
   </div>
 </div>
