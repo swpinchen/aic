@@ -68,7 +68,11 @@ clinicArray.each_with_index do |url, index|
   description: Faker::Lorem.paragraph(sentence_count: 4),
   specialities: specialitiesArray.sample,
   user: user_list.sample
-)
+  )
   clinic.photo.attach(io: file, filename: 'clinic.png', content_type: 'image/png')
+  puts 'Creating reviews...'
+  5.times do
+    review = Review.create!(rating: [1,2,3,4,5].sample, content: Faker::Lorem.paragraph(sentence_count: 2), clinic: clinic, user: user_list.sample)
+  end
 puts "#{index+1}. Id:#{clinic.id} - #{clinic.name} was created!"
 end
