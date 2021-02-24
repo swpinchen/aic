@@ -56,6 +56,23 @@ user_email_list.length.times do |index|
   puts "User #{user.id}: #{user.email} was created!"
 end
 
+puts 'Creating one real clinic...'
+
+clinic = Clinic.create!(name: "Real clinic", 
+  location: "Meguro 1-2-4, Meguro, Tokyo",
+  open_hours: "#{Faker::Time.backward(days: 0, period: :morning, format: :short)} - #{Faker::Time.forward(days: 0, period: :morning)}",
+  description: "We are an amazing clinic. More than half the patients that come here end up getting better. We are located in the heart of Tokyo!",
+  specialities: "general practice",
+  user: user_list.sample,
+  )
+file = URI.open('https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1672&q=80')
+clinic.photo.attach(io: file, filename: 'first.png', content_type: 'image/png')
+#adding five reviews to real clinic
+puts 'creating review for real clinic'
+5.times do
+  review = Review.create!(rating: [1,2,3,4,5].sample, content: Faker::Hipster.sentence, clinic: clinic, user: user_list.sample)
+end
+
 puts 'Creating clinics...'
 clinicArray.each_with_index do |url, index|
   puts url
@@ -72,7 +89,7 @@ clinicArray.each_with_index do |url, index|
   clinic.photo.attach(io: file, filename: 'clinic.png', content_type: 'image/png')
   puts 'Creating reviews...'
   5.times do
-    review = Review.create!(rating: [1,2,3,4,5].sample, content: Faker::Lorem.paragraph(sentence_count: 2), clinic: clinic, user: user_list.sample)
+    review = Review.create!(rating: [1,2,3,4,5].sample, content: Faker::Hipster.sentence, clinic: clinic, user: user_list.sample)
   end
 puts "#{index+1}. Id:#{clinic.id} - #{clinic.name} was created!"
 end
