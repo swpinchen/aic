@@ -21,7 +21,7 @@
 <div class="container">
 	<div class="container d-flex justify-content-between">
 		<h2 class="p-1"> Reviews: </h2>
-		<%= link_to 'create review', clinics_path, class: 'btn btn-primary' %>
+		<%= link_to 'create review', new_clinic_review_path(@clinic), class: 'btn btn-primary' %>
 	</div>
 			<ul>
 				<% if @clinic.reviews.any? %>
