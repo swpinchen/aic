@@ -11,7 +11,7 @@
 	  <h4> <%= @clinic.description %></h4>
 	</div>
 	<% if @clinic.photo.attached? %>
-	  <div class="card m-1" style="height: 300px; background-size: cover; background-image: url('<%= cl_image_path @clinic.photo.key%>');"></div>
+	  <div class="card m-1" style="height: 600px; background-size: cover; background-image: url('<%= cl_image_path @clinic.photo.key%>');"></div>
 	<% end %>
 	<p> Specialities:  </p>
 	<ul>
