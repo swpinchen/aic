@@ -12,7 +12,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     authorize @booking
     @booking.save
-    redirect_to clinic_path(@clinic)
+    redirect_to clinic_path(@clinic), notice: "Successfully booked 🎉"
   end
 
   private

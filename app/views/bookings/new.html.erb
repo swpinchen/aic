@@ -1,10 +1,15 @@
 <!--Made this html as a testing, please erase when creating the view for this action -->
 <div class="container">
-  <h2>New booking</h2>
+  <div class="card p-3 m-3">
+  <h2>book an appointment at <%=@clinic.name%></h2>
   <%= simple_form_for [@clinic, @booking] do |f| %>
-    <p>Please select the time and date</p>
+    <p>Please select the desired time and date</p>
     <%= f.datetime_field :booking_time %>
     <%= f.input :content %>
-    <%= f.submit "Book!", class: "btn btn-primary" %>
+    <div class="btns d-flex">
+      <%= f.submit "Book now!", class: "btn btn-primary mx-1" %>
+      <%= link_to "Cancel", clinic_path(@clinic), class: "btn btn-danger mx-1" %>
+    </div>
   <%end%>
+  </div>
 </div>

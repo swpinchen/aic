@@ -11,7 +11,14 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "pages/show";
 @import "components/card";
 @import "components/footer";
 @import "components/map";
+@import "components/flash";
 
+.flex-wrapper {
+  display: flex;
+  min-height: 90vh;
+  flex-direction: column;
+}

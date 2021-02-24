@@ -1,36 +1,45 @@
-<!--Made this html as a testing, please erase when creating the view for this action -->
-<div class="banner d-flex align-items-center justify-content-around">
-	  <div class="container">
-	    <h1> <%= @clinic.name %></h1>
-	    <h4> <%= @clinic.description %></h4>
-	    <p> Specialities:  </p>
-	    <ul>
-	    <li> <%= @clinic.specialities %> </li>
-	    </ul>
-	    <p> Open hours: </p>
-	    <p> <%= @clinic.open_hours %> </p>
-	    <%= link_to 'book', new_clinic_booking_path(@clinic), class: 'btn btn-primary m-1' %>
-	  </div>
-	<div class="container m-3">
-		<% if @clinic.photo.attached? %>
-			<div class="card m-1" style="height: 500px; background-size: cover; background-image: url('<%= cl_image_path @clinic.photo.key%>');">
-			</div>
-		<% end %>
+<!--Made this html as a testing, please erase when creating the view for this action -->  
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>	       
+<div class="p-3">
+  <div class="container">
+	<h1 class="text-center p-1" > <%= @clinic.name %></h1>
+	<div class="card p-3">
+	  <h4> <%= @clinic.description %></h4>
 	</div>
+	<% if @clinic.photo.attached? %>
+	  <div class="card m-1" style="height: 600px; background-size: cover; background-image: url('<%= cl_image_path @clinic.photo.key%>');"></div>
+	<% end %>
+	<p> Specialities:  </p>
+	<ul>
+	 <li> <%= @clinic.specialities %> </li>
+	</ul>
+	<%= link_to 'Book now!', new_clinic_booking_path(@clinic), class: 'btn btn-primary btn-block m-1' %>
+  </div>
 </div>
 <div class="container">
-	<div class="container d-flex justify-content-between">
-		<h2 class="p-1"> Reviews: </h2>
-		<%= link_to 'create review', clinics_path, class: 'btn btn-primary' %>
-	</div>
-			<ul>
-				<% if @clinic.reviews.any? %>
-					<% @clinic.reviews.each do |review| %>
-						<div class="container d-flex justify-content-between">
-						<li><%= review.created_at %> - <%= review.rating %></li>
-						<li><%= review.content %></li>
-						</div>
-					<% end %>
-				<% end %>
-			</ul>
+  <div class="container">
+    <h2 class="text-center p-3"> - Reviews - </h2>
+  	<%= link_to 'Leave a review', new_clinic_review_path(@clinic), class: 'btn-outline-secondary m-3' %>
+  </div>
+  <% if @clinic.reviews.any? %>
+    <% @clinic.reviews.each do |review| %>
+      <div class="card p-3">
+	    <div class="d-flex">
+          <% review.rating.times do %>
+		    <i class="fas fa-star"></i>
+		  <%end%>
+		</div>
+        <%= review.content %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<div class="container">
+  <h2 class="text-center mt-3">- Location -</h2>
+  <div class="location">
+  </div>
 </div>
