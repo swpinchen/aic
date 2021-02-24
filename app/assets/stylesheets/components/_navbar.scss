@@ -1,6 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
 .navbar-lewagon {
+  display: flex;
   justify-content: space-between;
-  background: white;
+  background: #eb5b37;
+  font-family: 'Righteous', cursive;
+  height: 45px;
+  padding-inline: 16px;
+  p {
+    color: white;
+  }
 }
 
 .navbar-lewagon .navbar-collapse {
