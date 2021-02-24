@@ -17,3 +17,8 @@
 @import "components/map";
 @import "components/flash";
 
+.flex-wrapper {
+  display: flex;
+  min-height: 86vh;
+  flex-direction: column;
+}

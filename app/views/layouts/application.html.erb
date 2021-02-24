@@ -12,10 +12,10 @@
   </head>
 
   <body>
-  <!-- render navbar -->
-    <%=render "shared/navbar"%>
-    <%= yield %>
-    <!-- footer  navbar -->
+    <div class="flex-wrapper">
+      <%=render "shared/navbar"%>
+      <%= yield %>
+    </div>
     <%=render "shared/footer"%>
   </body>
 </html>
