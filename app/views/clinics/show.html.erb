@@ -1,6 +1,12 @@
-<!--Made this html as a testing, please erase when creating the view for this action -->
+<!--Made this html as a testing, please erase when creating the view for this action -->  
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>	       
 <div class="banner d-flex align-items-center justify-content-around">
 	  <div class="container">
+	    
 	    <h1> <%= @clinic.name %></h1>
 	    <h4> <%= @clinic.description %></h4>
 	    <p> Specialities:  </p>
