@@ -4,19 +4,20 @@
   <% end %>
   <div class="card-product-infos">
     <h2><%= link_to clinic.name, clinic_path(clinic) %></h2>
-    <div class='d-flex'>
-      <p><%= clinic.description %></p>
       <div class="stars d-flex">
-      <% if clinic.reviews.any? %>
-        <% clinic.average_rating.times do %>
-          <i class="fas fa-star"></i>
+        <% if clinic.reviews.any? %>
+          <% clinic.average_rating.times do %>
+            <i class="fas fa-star"></i>
+          <% end %>
+          <% (5 - clinic.average_rating).times do %>
+          <i class="far fa-star"></i>
+          <% end %>
         <% end %>
-        <% (5 - clinic.average_rating).times do %>
-        <i class="far fa-star"></i>
-        <% end %>
-      <% end %>
       </div>
 
+    <div class='d-flex'>
+      <p><%= clinic.description %></p>
+      
     </div>
   </div>
 </div>
