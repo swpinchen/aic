@@ -6,12 +6,14 @@ skip_before_action :authenticate_user!, only: [:index]
 
   def new
     @review = Review.new
+    @clinic = Clinic.find(params[:clinic_id])
     authorize @review
   end
 
   def create
-    @review = Review.new(review_params)
-    @review.clinic = Clinic.find(params[:clinic_id])
+    @review = Review.create(review_params)
+    @clinic = Clinic.find(params[:clinic_id])
+    @review.clinic = @clinic
     @review.user = current_user
     authorize @review
     if @review.save
