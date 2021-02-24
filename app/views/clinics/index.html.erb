@@ -4,8 +4,11 @@
     <h2>Clinics nearby</h2>
     <div class="cards">
       <%@clinics.each do |clinic|%>
+
         <%= render 'clinics/card', clinic: clinic %>
-      <%end%>
+
+     <%end%>
+
     </div>
   </div>
   <div class="col-12 col-lg-5">
