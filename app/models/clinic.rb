@@ -8,9 +8,11 @@ class Clinic < ApplicationRecord
   validates :location, presence: true
   validates :description, presence: true
 
+  acts_as_taggable_on :languages
+
   def average_rating
     return nil unless reviews.any?
-   # sum of all raitings / number of all reviews
+    # sum of all raitings / number of all reviews
     number_of_reviews = reviews.size
     sum_of_ratings = reviews.sum {|review| review.rating}
     (sum_of_ratings.to_f / number_of_reviews).round

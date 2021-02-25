@@ -28,6 +28,6 @@ class ClinicsController < ApplicationController
   private
 
   def clinic_parms
-    params.require(:clinic).permit(:name, :location, :description, :photo)
+    params.require(:clinic).permit(:name, :location, :description, :photo, :language_list)
   end
 end
