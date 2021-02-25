@@ -7,4 +7,5 @@ Rails.application.routes.draw do
     # TO DO nest the reviews
     resources :reviews, only: [:index, :new, :create]
   end
+  resources :bookings, only: [:index]
 end

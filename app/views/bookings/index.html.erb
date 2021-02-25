@@ -1,0 +1,24 @@
+<div class="container min-height">
+  <div class="row">
+    <div class="col-xs-12 col-md-12">
+      <i><h1 class = "title-styled"> Your booking : </h1></i>
+      <% if @bookings.nil? %>
+      <h3 class= "no-book">  You haven't booked any clinics yet  </h3>
+      <%# <h3 class= "no-book"> <%= link_to "Let's try again", new_booking_path %>
+      <% else %>
+      <% @bookings.each do |booking| %>
+      <div class="product">
+        <%= cl_image_tag booking.clinic.photo.key, width: 300, height: 300, crop: :fill %>
+        <div class="product-body">
+        <ul>
+          <li> Booking date: <%=booking.booking_time %></li>
+          <li> Clinic name: <%=booking.clinic.name %></li>
+          <li> Clinic Speciality: <%= booking.clinic.specialities %></li>
+          <li> Status: <%= booking&.accepted %></li>
+        </ul>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
