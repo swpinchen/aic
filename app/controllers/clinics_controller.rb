@@ -13,6 +13,7 @@ class ClinicsController < ApplicationController
   def show
     @clinic = Clinic.find(params[:id])
     authorize @clinic
+    @markers = [{lat: @clinic.latitude, lng: @clinic.longitude}]
   end
 
   def new
