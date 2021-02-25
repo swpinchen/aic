@@ -1,12 +1,14 @@
 <!--Made this html as a testing, please erase when creating the view for this action -->
 <div class="row justify-content-between pl-3">
   <div class="col-12 col-lg-7">
-    <div class="flash flash-success alert alert-dismissible fade show " role="alert">
-      <img src="https://res.cloudinary.com/dn5fi6kt7/image/upload/v1614142578/job_doctor_man_szbux6.png" height="80" alt="">
-      <span>Cool! we found <strong>21</strong> clinics nearby</span>
-      <a data-dismiss="alert" aria-label="Close">
-        <i class="fas fa-times"></i>
-      </a>
+    <div class="text-center pt-3">
+      <% if @clinics.count == 1 %>
+        <h2>There is one clinic that matches your criteria</h2>
+      <% elsif @clinics.any? %>
+        <h2>There are <%= @clinics.count %> clinics that match your criteria</h2>
+      <% else  %>
+        <h2> We did not find any clinics that matched your criteria</h2>
+      <% end %>
     </div>
     <h2 class="my-3"></h2>
     <div class="cards">
