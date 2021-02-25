@@ -2,6 +2,12 @@ class ClinicsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     @clinics = policy_scope(Clinic)
+    @markers = @clinics.geocoded.map do |clinic|
+      {
+        lat: clinic.latitude,
+        lng: clinic.longitude
+      }
+    end
   end
 
   def show
