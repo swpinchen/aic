@@ -19,7 +19,7 @@
             <%= link_to "Create clinic", new_clinic_path, class: "dropdown-item"%>
             <% end %>
             <%= link_to "Bookings", bookings_path, class: "dropdown-item" %>
-            <%= link_to "Log Out", "#", class: "dropdown-item" %>
+            <%= link_to "Log Out", destroy_user_session_path, method: :delete, data: {confirm: "Are you sure you would like to log out?"}, class: "dropdown-item"%>
           <% else %>
             <%= link_to "Sign up", new_user_registration_path, class: "dropdown-item" %>
             <%= link_to "Log In", new_user_session_path, class: "dropdown-item" %>
