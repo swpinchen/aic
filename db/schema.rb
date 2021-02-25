@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2021_02_25_030160) do
     t.string "booking_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "accepted", default: false
     t.index ["clinic_id"], name: "index_bookings_on_clinic_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -56,6 +57,8 @@ ActiveRecord::Schema.define(version: 2021_02_25_030160) do
     t.text "specialities"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_clinics_on_user_id"
   end
 

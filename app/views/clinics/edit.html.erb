@@ -1,0 +1,10 @@
+<div class="container">
+  <h2>Edit clinic</h2>
+  <%= simple_form_for @clinic do |f| %>
+    <%= f.input :name %>
+    <%= f.input :location%>
+    <%= f.input :description%>
+    <%= f.input :photo, as: :file%>
+    <%= f.submit "Update", class: "btn btn-primary" %>
+  <%end%>
+</div>

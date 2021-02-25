@@ -10,6 +10,9 @@ class Clinic < ApplicationRecord
 
   acts_as_taggable_on :languages
 
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
+
   def average_rating
     return nil unless reviews.any?
     # sum of all raitings / number of all reviews
