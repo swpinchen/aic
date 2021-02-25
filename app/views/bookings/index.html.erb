@@ -7,16 +7,24 @@
       <%# <h3 class= "no-book"> <%= link_to "Let's try again", new_booking_path %>
       <% else %>
       <% @bookings.each do |booking| %>
-        <div class="card-product m-2">
+        <div class="card-product m-2 h-200">
           <%= cl_image_tag booking.clinic.photo.key, width: 300, height: 300, crop: :fill %>
           <div class="card-product-infos w-100">
             <div class="d-flex justify-content-between">
             <h2><%= link_to booking.clinic.name, clinic_path(booking.clinic) %></h2>
             <h2><%= link_to 'X', booking_path(booking), method: :delete, data: {confirm: "Are you sure you would like to cancel this booking?"}%></h2>
             </div>
-            <p> <%=booking.booking_time %></p>
-            <p> <%= booking.clinic.specialities %></p>
-            <p> You booking is <%= booking.status %></p>
+            <div class="d-flex justify-content-between">
+              <div>
+                <p> <%=booking.booking_time %></p>
+                <p> You booking is <%= booking.status %></p>
+              </div>
+              <div>
+                <% booking.clinic.speciality_list.each do |speciality| %> 
+                <p>-<%= speciality %></p>
+                <% end %>
+              </div>
+            </div>
           </div>
         </div>
       <% end %>
