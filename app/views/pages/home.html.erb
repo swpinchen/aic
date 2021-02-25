@@ -9,15 +9,15 @@
         class: "form-control",
         placeholder: "keyword"
         %>
-        <p>in <p> 
+        <p class="px-3">in</p> 
         <%= text_field_tag :location,
         params[:location],
         class: "form-control",
         placeholder: "Location"
         %>
-        <%= submit_tag "Search", class: "btn btn-primary" %>
+      </div>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
     <% end %>
-  </div>
 </div>
 <div class="three-cards d-flex">
   <div class="card-home">
