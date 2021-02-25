@@ -1,6 +1,6 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-clinicArray = [
+image_array = [
     'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2535&q=80',
     'https://images.unsplash.com/photo-1580281780460-82d277b0e3f8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80',
     'https://images.unsplash.com/photo-1564732278233-674355414c2c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2702&q=80',
@@ -24,7 +24,18 @@ clinicArray = [
     'https://images.unsplash.com/photo-1599700403969-f77b3aa74837?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
 ]
 
-specialitiesArray = [
+languages_array = [
+  'Englisn',
+  'Spanish',
+  'Italian',
+  'Chinese',
+  'Korean',
+  'French',
+  'Portuguese',
+  'Russian'
+]
+
+specialities_array = [
   'dermatology',
   'paediatrics',
   'dentristry',
@@ -89,7 +100,7 @@ puts 'creating review for real clinic'
 end
 
 puts 'Creating clinics...'
-clinicArray.each_with_index do |url, index|
+image_array.each_with_index do |url, index|
   puts url
   file = URI.open(url)
 
@@ -98,10 +109,16 @@ clinicArray.each_with_index do |url, index|
   #Open hours needs to be improved.  A quick implementation for now.
   open_hours: "#{Faker::Time.backward(days: 0, period: :morning, format: :short)} - #{Faker::Time.forward(days: 0, period: :morning)}",
   description: Faker::Lorem.paragraph(sentence_count: 4),
-  # specialities: specialitiesArray.sample,
   user: user_list.sample
   )
   clinic.photo.attach(io: file, filename: 'clinic.png', content_type: 'image/png')
+  [1,2].sample.times do
+    clinic.speciality_list.add(specialities_array.sample)
+  end
+  [1,2].sample.times do
+    clinic.language_list.add(languages_array.sample)
+  end
+  clinic.save
   puts 'Creating reviews...'
   5.times do
     review = Review.create!(rating: [1,2,3,4,5].sample, content: Faker::Hipster.sentence, clinic: clinic, user: user_list.sample)
