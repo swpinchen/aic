@@ -9,6 +9,7 @@ class Clinic < ApplicationRecord
   validates :description, presence: true
 
   acts_as_taggable_on :languages
+  acts_as_taggable_on :specialities
 
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
