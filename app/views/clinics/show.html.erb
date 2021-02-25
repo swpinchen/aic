@@ -5,19 +5,21 @@
   </div>
 <% end %>	       
 <div class="p-3">
-  <div class="container">
-	<h1 class="text-center p-1" > <%= @clinic.name %></h1>
-	<div class="card p-3">
-	  <h4> <%= @clinic.description %></h4>
-	</div>
-	<% if @clinic.photo.attached? %>
-	  <div class="card m-1" style="height: 600px; background-size: cover; background-image: url('<%= cl_image_path @clinic.photo.key%>');"></div>
-	<% end %>
-	<p> Specialities:  </p>
-	<ul>
-	 <li> <%= @clinic.specialities %> </li>
-	</ul>
-	<%= link_to 'Book now!', new_clinic_booking_path(@clinic), class: 'btn btn-primary btn-block m-1' %>
+  <div class="container d-flex">
+  	<div class='card p-5' style="width: 50%;">
+			<h1 class="text-center p-1" ><%= @clinic.name %></h1>
+			<h4> <%= @clinic.description %></h4>
+			<p> Specialities:  </p>
+			<ul>
+			 <li> <%= @clinic.specialities %> </li>
+			</ul>
+			<div class="container">
+			</div>
+			<%= link_to 'Book now!', new_clinic_booking_path(@clinic), class: 'btn btn-primary btn-block m-1' %>
+		</div>
+	  <div class="card m-1" style="height: 400px; width: 50%; background-size: cover; background-image: url('<%= cl_image_path @clinic.photo.key%>');">
+	  </div>
+	
   </div>
 </div>
 <div class="container">
