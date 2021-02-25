@@ -2,12 +2,21 @@
   <div class="container">
     <h1>Find a clinic in your native language</strong>!</h1>
     <p>Search over 1,000 clinics that offer services in English and more languages</p>
-    <nav class="navbar ">
-      <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Shibuya ward, Tokyo" aria-label="Search">
-        <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </nav>
+    <%= form_tag clinics_path, method: :get do %>
+      <div class="d-flex">
+        <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "keyword"
+        %>
+        <p>in <p> 
+        <%= text_field_tag :location,
+        params[:location],
+        class: "form-control",
+        placeholder: "Location"
+        %>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
   </div>
 </div>
 <div class="three-cards d-flex">

@@ -2,6 +2,8 @@ class ClinicsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     @clinics = policy_scope(Clinic)
+    @clinics = @clinics.near(params[:location], 5) if params[:location].present? #location
+    @clinics = @clinics.tagged_with(params[:query], any: true) if params[:query].present? #query, keywords
     @markers = @clinics.geocoded.map do |clinic|
       {
         lat: clinic.latitude,
