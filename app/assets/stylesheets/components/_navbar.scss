@@ -7,6 +7,7 @@
   font-family: 'Righteous', cursive;
   height: 45px;
   padding-inline: 16px;
+
   p {
     color: white;
   }
@@ -18,4 +19,8 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.drop-down-z {
+  z-index: 9000;
 }
