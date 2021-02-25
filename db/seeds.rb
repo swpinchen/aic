@@ -73,11 +73,11 @@ end
 
 puts 'Creating one real clinic...'
 
-clinic = Clinic.create!(name: "Real clinic", 
+clinic = Clinic.create!(name: "Real clinic",
   location: "Meguro 1-2-4, Meguro, Tokyo",
   open_hours: "#{Faker::Time.backward(days: 0, period: :morning, format: :short)} - #{Faker::Time.forward(days: 0, period: :morning)}",
   description: "We are an amazing clinic. More than half the patients that come here end up getting better. We are located in the heart of Tokyo!",
-  specialities: "general practice",
+  # specialities: "general practice",
   user: user_list.sample,
   )
 file = URI.open('https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1672&q=80')
@@ -98,7 +98,7 @@ clinicArray.each_with_index do |url, index|
   #Open hours needs to be improved.  A quick implementation for now.
   open_hours: "#{Faker::Time.backward(days: 0, period: :morning, format: :short)} - #{Faker::Time.forward(days: 0, period: :morning)}",
   description: Faker::Lorem.paragraph(sentence_count: 4),
-  specialities: specialitiesArray.sample,
+  # specialities: specialitiesArray.sample,
   user: user_list.sample
   )
   clinic.photo.attach(io: file, filename: 'clinic.png', content_type: 'image/png')

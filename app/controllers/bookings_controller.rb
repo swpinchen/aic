@@ -4,19 +4,30 @@ class BookingsController < ApplicationController
     @clinic = Clinic.find(params[:clinic_id])
     authorize @booking
   end
-    
+
   def create
-    @booking = Booking.create(booking_params)
+    @booking = Booking.new(booking_params)
     @clinic = Clinic.find(params[:clinic_id])
     @booking.clinic = @clinic
     @booking.user = current_user
     authorize @booking
     @booking.save
-    redirect_to clinic_path(@clinic), notice: "Successfully booked 🎉"
+    redirect_to bookings_path, notice: "Successfully booked 🎉"
+  end
+  def index
+    @bookings = policy_scope(Booking)
   end
 
+  def destroy
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    @booking.destroy
+    redirect_to bookings_path
+  end
+
+
   private
-  
+
   def booking_params
     params.require(:booking).permit(:booking_time, :content)
   end
