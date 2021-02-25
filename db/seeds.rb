@@ -35,6 +35,21 @@ specialitiesArray = [
   'general practice'
 ]
 
+wards_array = [
+  "Arakawa",
+  "Meguro",
+  "Shinagawa",
+  "Taito",
+  "Shibuya",
+  "Shinjuku",
+  "Kita",
+  "Koto",
+  "Adachi",
+  "Edogawa",
+  "Minato",
+  "Toshima"
+]
+
 puts 'Cleaning up db...'
 
 Review.destroy_all
@@ -79,7 +94,7 @@ clinicArray.each_with_index do |url, index|
   file = URI.open(url)
 
   clinic = Clinic.create!(name: "#{Faker::Address.unique.community} Clinic",
-  location: Faker::Address.unique.city,
+  location: "#{wards_array.sample}, Tokyo",
   #Open hours needs to be improved.  A quick implementation for now.
   open_hours: "#{Faker::Time.backward(days: 0, period: :morning, format: :short)} - #{Faker::Time.forward(days: 0, period: :morning)}",
   description: Faker::Lorem.paragraph(sentence_count: 4),
