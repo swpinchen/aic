@@ -29,9 +29,6 @@ languages_array = [
   'Spanish',
   'Italian',
   'Chinese',
-  'Korean',
-  'French',
-  'Portuguese',
   'Russian'
 ]
 
@@ -39,10 +36,6 @@ specialities_array = [
   'dermatology',
   'paediatrics',
   'dentristry',
-  'surgery',
-  'radiology',
-  'neurology',
-  'pathology',
   'general practice'
 ]
 
@@ -53,12 +46,6 @@ wards_array = [
   "Taito",
   "Shibuya",
   "Shinjuku",
-  "Kita",
-  "Koto",
-  "Adachi",
-  "Edogawa",
-  "Minato",
-  "Toshima"
 ]
 
 puts 'Cleaning up db...'
@@ -93,6 +80,13 @@ clinic = Clinic.create!(name: "Real clinic",
   )
 file = URI.open('https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1672&q=80')
 clinic.photo.attach(io: file, filename: 'first.png', content_type: 'image/png')
+[1,2].sample.times do
+  clinic.speciality_list.add(specialities_array.sample)
+end
+[1,2].sample.times do
+  clinic.language_list.add(languages_array.sample)
+end
+clinic.save
 #adding five reviews to real clinic
 puts 'creating review for real clinic'
 5.times do
