@@ -77,7 +77,7 @@ clinic = Clinic.create!(name: "Real clinic",
   description: "We are an amazing clinic. More than half the patients that come here end up getting better. We are located in the heart of Tokyo!",
   # specialities: "general practice",
   user: user_list.sample,
-  )
+)
 file = URI.open('https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1672&q=80')
 clinic.photo.attach(io: file, filename: 'first.png', content_type: 'image/png')
 [1,2].sample.times do
@@ -99,7 +99,7 @@ image_array.each_with_index do |url, index|
   file = URI.open(url)
 
   clinic = Clinic.create!(name: "#{Faker::Address.unique.community} Clinic",
-  location: "#{wards_array.sample}, Tokyo",
+  location: "#{rand(1..10)} #{wards_array.sample}, Tokyo",
   #Open hours needs to be improved.  A quick implementation for now.
   open_hours: "#{Faker::Time.backward(days: 0, period: :morning, format: :short)} - #{Faker::Time.forward(days: 0, period: :morning)}",
   description: Faker::Lorem.paragraph(sentence_count: 4),
