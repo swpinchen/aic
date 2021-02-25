@@ -8,18 +8,26 @@
   <div class="container d-flex">
   	<div class='card p-5' style="width: 50%;">
 			<h1 class="text-center p-1" ><%= @clinic.name %></h1>
-			<h4> <%= @clinic.description %></h4>
-			<p> Specialities:  </p>
+			<p> <%= @clinic.description %><p>
+			<p><strong>Specialities:</strong></p>
 			<ul>
-			 <li> <%= @clinic.specialities %> </li>
+			  <% @clinic.speciality_list.each do |speciality| %> 
+          <li><%= speciality %></li>
+        <% end %>
 			</ul>
+      <p><strong>Languages:</strong></p>
+      <ul>
+        <% @clinic.language_list.each do |language| %>
+        <li><%= language %> </li>
+        <% end  %>
+      </ul>
       <p><%=@clinic.language_list%></p>
 			<div class="container">
 			</div>
 			<%= link_to 'Book now!', new_clinic_booking_path(@clinic), class: 'btn btn-primary btn-block m-1' %>
 			<%= link_to 'Edit', edit_clinic_path(@clinic), class: 'btn btn-danger btn-block m-1' %>
 		</div>
-	  <div class="card m-1" style="height: 400px; width: 50%; background-size: cover; background-image: url('<%= cl_image_path @clinic.photo.key%>');">
+	  <div class="card m-1" style="height: 600px; width: 50%; background-size: cover; background-image: url('<%= cl_image_path @clinic.photo.key%>');">
 	  </div>
 	
   </div>
