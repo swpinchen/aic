@@ -20,7 +20,7 @@ class ClinicsController < ApplicationController
 
   def new
     @clinic = Clinic.new
-    authorize @clinic
+    authorize @clinic if current_user.owner
   end
 
   def create

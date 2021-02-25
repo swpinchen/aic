@@ -14,9 +14,16 @@
       <li class="nav-item dropdown drop-down-z">
         <%= image_tag "https://avatars.githubusercontent.com/u/33692745?s=400&u=84c4e3aea3d49f4eabf46376a19718d462834914&v=4", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <%= link_to "Create clinic", new_clinic_path, class: "dropdown-item" %>
-          <%= link_to "Bookings", bookings_path, class: "dropdown-item" %>
-          <%= link_to "Log Out", "#", class: "dropdown-item" %>
+          <% if current_user != nil %>
+            <% if current_user.owner  %>
+            <%= link_to "Create clinic", new_clinic_path, class: "dropdown-item"%>
+            <% end %>
+            <%= link_to "Bookings", bookings_path, class: "dropdown-item" %>
+            <%= link_to "Log Out", "#", class: "dropdown-item" %>
+          <% else %>
+            <%= link_to "Sign up", new_user_registration_path, class: "dropdown-item" %>
+            <%= link_to "Log In", new_user_session_path, class: "dropdown-item" %>
+          <% end %>
         </div>
       </li>
     </ul>
