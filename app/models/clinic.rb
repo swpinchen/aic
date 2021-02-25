@@ -13,6 +13,14 @@ class Clinic < ApplicationRecord
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
 
+  # Searchable
+  include PgSearch::Model
+  pg_search_scope :search_by_language_and_location,
+    against: [ :language_list, :location ],
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
+
   def average_rating
     return nil unless reviews.any?
     # sum of all raitings / number of all reviews
