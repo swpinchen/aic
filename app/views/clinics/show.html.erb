@@ -10,7 +10,7 @@
 			<h1 class="text-center p-1" ><%= @clinic.name %></h1>
 			<p> <%= @clinic.description %><p>
 			<p><strong>Specialities:</strong></p>
-			<div class="d-flex">
+			<div class="d-flex tags">
 			  <% @clinic.speciality_list.each do |speciality| %>
           <%= link_to "/clinics?query=#{speciality}&commit=Search", class: "linkss" do %>
             <p style="background-color: #80808052"><em> #<%= speciality %> </em></p>
@@ -18,7 +18,7 @@
         <% end %>
 			</div>
       <p><strong>Languages:</strong></p>
-      <div class="d-flex">
+      <div class="d-flex tags">
         <% @clinic.language_list.each do |language| %>
           <%= link_to "/clinics?query=#{language}&commit=Search", class: "linkss" do %>
             <p style="background-color: #80808052"><em> #<%= language %> </em></p>
