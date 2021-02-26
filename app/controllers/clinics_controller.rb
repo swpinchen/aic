@@ -7,7 +7,8 @@ class ClinicsController < ApplicationController
     @markers = @clinics.geocoded.map do |clinic|
       {
         lat: clinic.latitude,
-        lng: clinic.longitude
+        lng: clinic.longitude,
+        image_url: helpers.asset_url('clinic.png')
       }
     end
   end
