@@ -39,13 +39,13 @@
           <h2 class="text-center p-3"> - Reviews - </h2>
           <%= link_to 'Leave a review', new_clinic_review_path(@clinic), class: 'btn btn-outline-secondary m-3' %>
         <% if @clinic.reviews.any? %>
-          <% @clinic.reviews.each do |review| %>
+          <% @clinic.reviews.order(id: :desc).each do |review| %>
             <div class="card p-3" style="width:100%">
-            <div class="d-flex">
-                <% review.rating.times do %>
-              <i class="fas fa-star"></i>
-            <%end%>
-          </div>
+              <div class="d-flex">
+                  <% review.rating.times do %>
+                    <i class="fas fa-star"></i>
+                  <% end %>
+              </div>
               <%= review.content %>
             </div>
           <% end %>
