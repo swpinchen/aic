@@ -83,14 +83,14 @@ end
 
 puts 'Creating one real clinic...'
 
-clinic = Clinic.create!(name: "Not Ivan's clinic",
+clinic = Clinic.create!(name: "Stuart's Dentistry",
   location: "Meguro 1-2-4, Meguro, Tokyo",
   open_hours: "#{Faker::Time.backward(days: 0, period: :morning, format: :short)} - #{Faker::Time.forward(days: 0, period: :morning)}",
   description: "We are better than Ivan's clinic. More than half the patients that come here end up getting better. We are located in the heart of Tokyo!",
   # specialities: "general practice",
   user: user_list.sample,
 )
-file = URI.open('https://images.unsplash.com/photo-1585559604933-2c1fd76e1bd8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80')
+file = URI.open('https://images.unsplash.com/photo-1567568443997-19f025355d52?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80')
 clinic.photo.attach(io: file, filename: 'first.png', content_type: 'image/png')
 [1,2].sample.times do
   clinic.speciality_list.add("dentistry")
