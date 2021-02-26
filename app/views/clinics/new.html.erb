@@ -1,13 +1,15 @@
 <!--Made this html as a testing, please erase when creating the view for this action -->
 <div class="container">
-  <h2>New clinic</h2>
-  <%= simple_form_for @clinic do |f| %>
-    <%= f.input :name %>
-    <%= f.input :location, class: "form-control"%>
-    <%= f.input :description%>
-    <%= f.input :language_list%>
-    <%= f.input :speciality_list%>
-    <%= f.input :photo, as: :file%>
-    <%= f.submit "Create Clinic", class: "btn btn-primary" %>
-  <%end%>
+  <div class="card p-3 m-3">
+    <h2>New clinic</h2>
+    <%= simple_form_for @clinic do |f| %>
+      <%= f.input :name %>
+      <%= f.input :location, class: "form-control"%>
+      <%= f.input :description%>
+      <%= f.input :language_list%>
+      <%= f.input :speciality_list%>
+      <%= f.input :photo, as: :file%>
+      <%= f.submit "Create Clinic", class: "btn btn-primary" %>
+    <%end%>
+  </div>
 </div>
