@@ -25,7 +25,7 @@ image_array = [
 ]
 
 languages_array = [
-  'Englisn',
+  'English',
   'Spanish',
   'Italian',
   'Chinese',
@@ -46,6 +46,18 @@ wards_array = [
   "Taito",
   "Shibuya",
   "Shinjuku",
+]
+
+reviews_array = [
+  'Good pizza',
+  "Probably the best doctor I've ever had",
+  'The beds are clean and the water is potable',
+  'The doctor has a crazy look but he is usually kind',
+  'The staff can get a little irritating',
+  'Its so good to be able to not worry about language issues! Will come here for the rest of my time in Tokyo!',
+  'Meh',
+  'They follow proper medical procedure',
+  'They gave me the wrong meds last time. Had the trip of my life'
 ]
 
 puts 'Cleaning up db...'
@@ -71,26 +83,26 @@ end
 
 puts 'Creating one real clinic...'
 
-clinic = Clinic.create!(name: "Real clinic",
+clinic = Clinic.create!(name: "Not Ivan's clinic",
   location: "Meguro 1-2-4, Meguro, Tokyo",
   open_hours: "#{Faker::Time.backward(days: 0, period: :morning, format: :short)} - #{Faker::Time.forward(days: 0, period: :morning)}",
-  description: "We are an amazing clinic. More than half the patients that come here end up getting better. We are located in the heart of Tokyo!",
+  description: "We are better than Ivan's clinic. More than half the patients that come here end up getting better. We are located in the heart of Tokyo!",
   # specialities: "general practice",
   user: user_list.sample,
 )
-file = URI.open('https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1672&q=80')
+file = URI.open('https://images.unsplash.com/photo-1585559604933-2c1fd76e1bd8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80')
 clinic.photo.attach(io: file, filename: 'first.png', content_type: 'image/png')
 [1,2].sample.times do
   clinic.speciality_list.add(specialities_array.sample)
 end
 [1,2].sample.times do
-  clinic.language_list.add(languages_array.sample)
+  clinic.language_list.add("Spanish")
 end
 clinic.save
 #adding five reviews to real clinic
 puts 'creating review for real clinic'
-5.times do
-  review = Review.create!(rating: [1,2,3,4,5].sample, content: Faker::Hipster.sentence, clinic: clinic, user: user_list.sample)
+4.times do
+  review = Review.create!(rating: [1,2,3,4,5].sample, content: Faker::Restaurant.review, clinic: clinic, user: user_list.sample)
 end
 
 puts 'Creating clinics...'
@@ -102,7 +114,7 @@ image_array.each_with_index do |url, index|
   location: "#{rand(1..10)} #{wards_array.sample}, Tokyo",
   #Open hours needs to be improved.  A quick implementation for now.
   open_hours: "#{Faker::Time.backward(days: 0, period: :morning, format: :short)} - #{Faker::Time.forward(days: 0, period: :morning)}",
-  description: Faker::Lorem.paragraph(sentence_count: 4),
+  description: Faker::Restaurant.description[0..140],
   user: user_list.sample
   )
   clinic.photo.attach(io: file, filename: 'clinic.png', content_type: 'image/png')
@@ -115,7 +127,7 @@ image_array.each_with_index do |url, index|
   clinic.save
   puts 'Creating reviews...'
   5.times do
-    review = Review.create!(rating: [1,2,3,4,5].sample, content: Faker::Hipster.sentence, clinic: clinic, user: user_list.sample)
+    review = Review.create!(rating: [1,2,3,4,5].sample, content: Faker::Restaurant.review, clinic: clinic, user: user_list.sample)
   end
 puts "#{index+1}. Id:#{clinic.id} - #{clinic.name} was created!"
 end
