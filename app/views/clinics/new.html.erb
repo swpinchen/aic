@@ -3,7 +3,7 @@
   <h2>New clinic</h2>
   <%= simple_form_for @clinic do |f| %>
     <%= f.input :name %>
-    <%= f.input :location%>
+    <%= f.input :location, class: "form-control"%>
     <%= f.input :description%>
     <%= f.input :photo, as: :file%>
     <%= f.submit "Create Clinic", class: "btn btn-primary" %>
