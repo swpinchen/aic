@@ -26,6 +26,7 @@ require("channels")
 import "bootstrap";
 import { initAutocomplete } from "../plugins/init_autocomplete";
 import { initAutocompleteNew } from "../plugins/init_autocomplete_new";
+import { initHover } from "../plugins/init_hover";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -38,4 +39,5 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initAutocomplete();
   initAutocompleteNew();
+  initHover();
 })

@@ -8,7 +8,8 @@ class ClinicsController < ApplicationController
       {
         lat: clinic.latitude,
         lng: clinic.longitude,
-        image_url: helpers.asset_url('clinic.png')
+        image_url: helpers.asset_url('clinic.png'),
+        id: clinic.id
       }
     end
   end
@@ -16,7 +17,7 @@ class ClinicsController < ApplicationController
   def show
     @clinic = Clinic.find(params[:id])
     authorize @clinic
-    @markers = [{lat: @clinic.latitude, lng: @clinic.longitude}]
+    @markers = [{lat: @clinic.latitude, lng: @clinic.longitude, image_url: helpers.asset_url('clinic.png')}]
   end
 
   def new
