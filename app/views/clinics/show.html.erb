@@ -10,18 +10,24 @@
 			<h1 class="text-center p-1" ><%= @clinic.name %></h1>
 			<p> <%= @clinic.description %><p>
 			<p><strong>Specialities:</strong></p>
-			<ul>
-			  <% @clinic.speciality_list.each do |speciality| %> 
-          <li><%= speciality %></li>
+			<div class="d-flex">
+			  <% @clinic.speciality_list.each do |speciality| %>
+          <%= link_to "/clinics?query=#{speciality}&commit=Search", class: "linkss" do %>
+            <p style="background-color: #80808052"><em> #<%= speciality %> </em></p>
+          <% end %>
         <% end %>
-			</ul>
+			</div>
       <p><strong>Languages:</strong></p>
-      <ul>
+      <div class="d-flex">
         <% @clinic.language_list.each do |language| %>
-        <li><%= language %> </li>
-        <% end  %>
-      </ul>
-			<%= link_to 'Book now!', new_clinic_booking_path(@clinic), class: 'btn btn-primary btn-block m-1 btn-book' %>
+          <%= link_to "/clinics?query=#{language}&commit=Search", class: "linkss" do %>
+            <p style="background-color: #80808052"><em> #<%= language %> </em></p>
+          <% end  %>
+        <% end %>
+      </div>
+			<div class="container">
+			</div>
+			<%= link_to 'Book now!', new_clinic_booking_path(@clinic), class: 'btn btn-primary btn-block m-1' %>
       <% if current_user.owner %>
 			 <%= link_to 'Edit', edit_clinic_path(@clinic), class: 'btn btn-danger btn-block m-1' %>
       <% end %>

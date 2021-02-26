@@ -18,6 +18,12 @@
 @import "components/flash";
 @import "components/banner";
 
+body{
+  a{
+    text-decoration: none;
+  }
+}
+
 .flex-wrapper {
   display: flex;
   min-height: 90vh;
