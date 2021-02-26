@@ -35,7 +35,7 @@ languages_array = [
 specialities_array = [
   'dermatology',
   'paediatrics',
-  'dentristry',
+  'dentistry',
   'general practice'
 ]
 
@@ -93,7 +93,7 @@ clinic = Clinic.create!(name: "Not Ivan's clinic",
 file = URI.open('https://images.unsplash.com/photo-1585559604933-2c1fd76e1bd8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80')
 clinic.photo.attach(io: file, filename: 'first.png', content_type: 'image/png')
 [1,2].sample.times do
-  clinic.speciality_list.add(specialities_array.sample)
+  clinic.speciality_list.add("dentistry")
 end
 [1,2].sample.times do
   clinic.language_list.add("Spanish")
