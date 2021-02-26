@@ -37,8 +37,8 @@
   	  </div>
       <div class="container">
           <h2 class="text-center p-3"> - Reviews - </h2>
-          <%= link_to 'Leave a review', new_clinic_review_path(@clinic), class: 'btn btn-outline-secondary m-3' %>
         <% if @clinic.reviews.any? %>
+          <%= link_to 'Leave a review', new_clinic_review_path(@clinic), class: 'btn btn-outline-secondary m-3' %>
           <% @clinic.reviews.order(id: :desc).each do |review| %>
             <div class="card p-3" style="width:100%">
               <div class="d-flex">
@@ -49,6 +49,8 @@
               <%= review.content %>
             </div>
           <% end %>
+        <% else %>
+          <p class='text-center'> Be the first to <%= link_to 'leave', new_clinic_review_path(@clinic), class: 'btn-outline-secondary' %> a review for <%= @clinic.name %> </p>
         <% end %>
       </div>
     </div>
