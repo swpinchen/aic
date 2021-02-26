@@ -2,13 +2,15 @@
 <div class="row justify-content-between pl-3">
   <div class="col-12 col-lg-7">
     <div class="text-center pt-3">
-      <% if @clinics.length == 1 %>
-        <h2>There is one clinic that matches your criteria</h2>
-      <% elsif @clinics.any? %>
-        <h2>There are <%= @clinics.length %> clinics that match your criteria</h2>
-      <% else  %>
-        <h2> We did not find any clinics that match your criteria</h2>
-      <% end %>
+      <% if current_user == nil || current_user.owner == false %>
+        <% if @clinics.length == 1 %>
+          <h2>There is one clinic that matches your criteria</h2>
+        <% elsif @clinics.any? %>
+          <h2>There are <%= @clinics.length %> clinics that match your criteria</h2>
+        <% else  %>
+          <h2> We did not find any clinics that match your criteria</h2>
+        <% end %>
+      <% end  %>
     </div>
     <h2 class="my-3"></h2>
     <div class="cards">
